@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('libraries/utils.php');
-
 class Article extends Controller {
 
     protected $modelName = \Models\Article::class;
@@ -21,7 +19,7 @@ class Article extends Controller {
          */
         $pageTitle = 'Accueil';
 
-        render('articles/index', compact('pageTitle', 'articles'));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
     public function show() {
@@ -63,7 +61,7 @@ class Article extends Controller {
          */
         $pageTitle = $article['title'];
 
-        render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
+        \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
     public function delete() {
@@ -96,7 +94,7 @@ class Article extends Controller {
         /**
          * 5. Redirection vers la page d'accueil
          */
-        redirect('index.php');
+        \Http::redirect('index.php');
     }
 }
 ?>
