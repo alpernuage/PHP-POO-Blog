@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('libraries/utils.php');
-
 class Comment extends Controller {
 
     protected $modelName = \Models\Comment::class;
@@ -54,7 +52,7 @@ class Comment extends Controller {
         $this->model->insert($author, $content, $article_id);
 
         // 4. Redirection vers l'article en question :
-        \Http::redirect("article.php?id=" . $article_id);
+        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
     
     public function delete() {
@@ -88,7 +86,7 @@ class Comment extends Controller {
         /**
          * 5. Redirection vers l'article en question
          */
-        \Http::redirect("article.php?id=" . $article_id);
+        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
 
 }
